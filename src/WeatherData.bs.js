@@ -14,7 +14,8 @@ function parseWeatherJson(json) {
           /* temp */Json_decode.field("temperature", (function (param) {
                   return Json_decode.optional(Json_decode.$$float, param);
                 }), json),
-          /* id */String(Json_decode.field("stationid", Json_decode.$$int, json))
+          /* id */String(Json_decode.field("stationid", Json_decode.$$int, json)),
+          /* imageUrl */Json_decode.field("iconurl", Json_decode.string, json)
         ];
 }
 

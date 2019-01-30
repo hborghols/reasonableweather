@@ -5,8 +5,8 @@ var $$Array = require("bs-platform/lib/js/array.js");
 var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
-var Pervasives = require("bs-platform/lib/js/pervasives.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var Station$ReactTemplate = require("./Station.bs.js");
 var WeatherData$ReactTemplate = require("./WeatherData.bs.js");
 
 var component = ReasonReact.reducerComponent("App");
@@ -46,38 +46,56 @@ function make() {
                         var match = station[/* name */0];
                         switch (match) {
                           case "Meetstation Groningen" : 
-                              var match$1 = station[/* temp */2];
-                              return React.createElement("p", {
-                                          key: station[/* id */3]
-                                        }, React.createElement("a", {
-                                              className: "buienradar-link",
-                                              href: "https://www.buienradar.nl/weer/groningen/nl/2755251"
-                                            }, "Groningen"), ": " + ((
-                                            match$1 !== undefined ? Pervasives.string_of_float(match$1) + "C" : "No temp found"
-                                          ) + (", " + (station[/* summary */1] + " "))));
+                              return React.createElement("div", {
+                                          key: station[/* id */3],
+                                          style: {
+                                            display: "flex",
+                                            margin: "0px 24px",
+                                            alignItems: "center",
+                                            flexDirection: "column"
+                                          }
+                                        }, React.createElement("span", {
+                                              style: {
+                                                fontSize: "1.5em"
+                                              }
+                                            }, React.createElement("a", {
+                                                  className: "buienradar-link",
+                                                  href: "https://www.buienradar.nl/weer/groningen/nl/2755251"
+                                                }, "Groningen")), ReasonReact.element(undefined, undefined, Station$ReactTemplate.make(station, /* array */[])));
                           case "Meetstation Schiphol" : 
-                              var match$2 = station[/* temp */2];
-                              return React.createElement("p", {
-                                          key: station[/* id */3]
-                                        }, React.createElement("a", {
-                                              className: "buienradar-link",
-                                              href: "https://www.buienradar.nl/weer/amsterdam/nl/2759794"
-                                            }, "Amsterdam"), ": " + ((
-                                            match$2 !== undefined ? Pervasives.string_of_float(match$2) + "C" : "No temp found"
-                                          ) + (", " + (station[/* summary */1] + " "))));
+                              return React.createElement("div", {
+                                          key: station[/* id */3],
+                                          style: {
+                                            display: "flex",
+                                            margin: "0px 24px",
+                                            alignItems: "center",
+                                            flexDirection: "column"
+                                          }
+                                        }, React.createElement("span", {
+                                              style: {
+                                                fontSize: "1.5em"
+                                              }
+                                            }, React.createElement("a", {
+                                                  className: "buienradar-link",
+                                                  href: "https://www.buienradar.nl/weer/amsterdam/nl/2759794"
+                                                }, "Amsterdam")), ReasonReact.element(undefined, undefined, Station$ReactTemplate.make(station, /* array */[])));
                           case "Meetstation Volkel" : 
-                              var match$3 = station[/* temp */2];
-                              return React.createElement("p", {
-                                          key: station[/* id */3]
-                                        }, React.createElement("a", {
-                                              className: "buienradar-link",
-                                              href: "https://www.buienradar.nl/weer/nijmegen/nl/2750053"
-                                            }, "Nijmegen"), "/", React.createElement("a", {
-                                              className: "buienradar-link",
-                                              href: "https://www.buienradar.nl/weer/oss/nl/2749234"
-                                            }, "Oss"), ": " + ((
-                                            match$3 !== undefined ? Pervasives.string_of_float(match$3) + "C" : "No temp found"
-                                          ) + (", " + (station[/* summary */1] + " "))));
+                              return React.createElement("div", {
+                                          key: station[/* id */3],
+                                          style: {
+                                            display: "flex",
+                                            margin: "0px 24px",
+                                            alignItems: "center",
+                                            flexDirection: "column"
+                                          }
+                                        }, React.createElement("span", {
+                                              style: {
+                                                fontSize: "1.5em"
+                                              }
+                                            }, React.createElement("a", {
+                                                  className: "buienradar-link",
+                                                  href: "https://www.buienradar.nl/weer/nijmegen/nl/2750053"
+                                                }, "Nijmegen")), ReasonReact.element(undefined, undefined, Station$ReactTemplate.make(station, /* array */[])));
                           default:
                             return "";
                         }
@@ -87,8 +105,39 @@ function make() {
                   match$1 !== 0 ? "Error loading forecast" : "Loading forecast..."
                 ) : match$1[0][/* summary */0];
               return React.createElement("div", {
-                          className: "App"
-                        }, React.createElement("h1", undefined, "Huidig weer:"), React.createElement("p", undefined, weatherComponent), React.createElement("h1", undefined, "Voorspelling: "), React.createElement("p", undefined, forecastComponent), React.createElement("p", undefined, "data van: ", React.createElement("a", {
+                          className: "App",
+                          style: {
+                            display: "flex",
+                            fontFamily: "Helvetica",
+                            fontSize: "1em",
+                            paddingTop: "12em",
+                            alignItems: "center",
+                            flexDirection: "column",
+                            justifyContent: "center"
+                          }
+                        }, React.createElement("div", {
+                              style: {
+                                display: "flex",
+                                alignItems: "center",
+                                flexDirection: "row"
+                              }
+                            }, weatherComponent), React.createElement("div", {
+                              style: {
+                                display: "flex",
+                                fontSize: "1.5em",
+                                maxWidth: "600px",
+                                paddingTop: "4em",
+                                alignItems: "center",
+                                flexDirection: "row",
+                                justifyContent: "center"
+                              }
+                            }, forecastComponent), React.createElement("p", {
+                              style: {
+                                bottom: "0px",
+                                position: "absolute",
+                                right: "0px"
+                              }
+                            }, "data van: ", React.createElement("a", {
                                   className: "buienradar-link",
                                   href: "https://www.buienradar.nl"
                                 }, "https://www.buienradar.nl")));

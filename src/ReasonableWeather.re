@@ -72,77 +72,68 @@ let make = _children => {
             (station: WeatherData.weather) =>
               switch (station.name) {
               | "Meetstation Volkel" =>
-                <p key={station.id}>
-                  <a
-                    className="buienradar-link"
-                    href="https://www.buienradar.nl/weer/nijmegen/nl/2750053">
-                    {ReasonReact.string("Nijmegen")}
-                  </a>
-                  {ReasonReact.string("/")}
-                  <a
-                    className="buienradar-link"
-                    href="https://www.buienradar.nl/weer/oss/nl/2749234">
-                    {ReasonReact.string("Oss")}
-                  </a>
-                  {
-                    ReasonReact.string(
-                      ": "
-                      ++ (
-                        switch (station.temp) {
-                        | Some(temp) => string_of_float(temp) ++ "C"
-                        | None => "No temp found"
-                        }
-                      )
-                      ++ ", "
-                      ++ station.summary
-                      ++ " ",
+                <div
+                  key={station.id}
+                  style={
+                    ReactDOMRe.Style.make(
+                      ~display="flex",
+                      ~flexDirection="column",
+                      ~alignItems="center",
+                      ~margin="0px 24px",
+                      (),
                     )
-                  }
-                </p>
+                  }>
+                  <span style={ReactDOMRe.Style.make(~fontSize="1.5em", ())}>
+                    <a
+                      className="buienradar-link"
+                      href="https://www.buienradar.nl/weer/nijmegen/nl/2750053">
+                      {ReasonReact.string("Nijmegen")}
+                    </a>
+                  </span>
+                  <Station station />
+                </div>
               | "Meetstation Groningen" =>
-                <p key={station.id}>
-                  <a
-                    className="buienradar-link"
-                    href="https://www.buienradar.nl/weer/groningen/nl/2755251">
-                    {ReasonReact.string("Groningen")}
-                  </a>
-                  {
-                    ReasonReact.string(
-                      ": "
-                      ++ (
-                        switch (station.temp) {
-                        | Some(temp) => string_of_float(temp) ++ "C"
-                        | None => "No temp found"
-                        }
-                      )
-                      ++ ", "
-                      ++ station.summary
-                      ++ " ",
+                <div
+                  key={station.id}
+                  style={
+                    ReactDOMRe.Style.make(
+                      ~display="flex",
+                      ~flexDirection="column",
+                      ~alignItems="center",
+                      ~margin="0px 24px",
+                      (),
                     )
-                  }
-                </p>
+                  }>
+                  <span style={ReactDOMRe.Style.make(~fontSize="1.5em", ())}>
+                    <a
+                      className="buienradar-link"
+                      href="https://www.buienradar.nl/weer/groningen/nl/2755251">
+                      {ReasonReact.string("Groningen")}
+                    </a>
+                  </span>
+                  <Station station />
+                </div>
               | "Meetstation Schiphol" =>
-                <p key={station.id}>
-                  <a
-                    className="buienradar-link"
-                    href="https://www.buienradar.nl/weer/amsterdam/nl/2759794">
-                    {ReasonReact.string("Amsterdam")}
-                  </a>
-                  {
-                    ReasonReact.string(
-                      ": "
-                      ++ (
-                        switch (station.temp) {
-                        | Some(temp) => string_of_float(temp) ++ "C"
-                        | None => "No temp found"
-                        }
-                      )
-                      ++ ", "
-                      ++ station.summary
-                      ++ " ",
+                <div
+                  key={station.id}
+                  style={
+                    ReactDOMRe.Style.make(
+                      ~display="flex",
+                      ~flexDirection="column",
+                      ~alignItems="center",
+                      ~margin="0px 24px",
+                      (),
                     )
-                  }
-                </p>
+                  }>
+                  <span style={ReactDOMRe.Style.make(~fontSize="1.5em", ())}>
+                    <a
+                      className="buienradar-link"
+                      href="https://www.buienradar.nl/weer/amsterdam/nl/2759794">
+                      {ReasonReact.string("Amsterdam")}
+                    </a>
+                  </span>
+                  <Station station />
+                </div>
               | _ => ReasonReact.string("")
               },
             weather,
@@ -156,12 +147,55 @@ let make = _children => {
       | Some(forecast) => ReasonReact.string(forecast.summary)
       | Error => ReasonReact.string("Error loading forecast")
       };
-    <div className="App">
-      <h1> {ReasonReact.string("Huidig weer:")} </h1>
-      <p> weatherComponent </p>
-      <h1> {ReasonReact.string("Voorspelling: ")} </h1>
-      <p> forecastComponent </p>
-      <p>
+    <div
+      className="App"
+      style={
+        ReactDOMRe.Style.make(
+          ~fontSize="1em",
+          ~fontFamily="Helvetica",
+          ~display="flex",
+          ~flexDirection="column",
+          ~alignItems="center",
+          ~justifyContent="center",
+          ~paddingTop="12em",
+          (),
+        )
+      }>
+      <div
+        style={
+          ReactDOMRe.Style.make(
+            ~display="flex",
+            ~flexDirection="row",
+            ~alignItems="center",
+            (),
+          )
+        }>
+        weatherComponent
+      </div>
+      <div
+        style={
+          ReactDOMRe.Style.make(
+            ~display="flex",
+            ~flexDirection="row",
+            ~alignItems="center",
+            ~justifyContent="center",
+            ~paddingTop="4em",
+            ~maxWidth="600px",
+            ~fontSize="1.5em",
+            (),
+          )
+        }>
+        forecastComponent
+      </div>
+      <p
+        style={
+          ReactDOMRe.Style.make(
+            ~bottom="0px",
+            ~right="0px",
+            ~position="absolute",
+            (),
+          )
+        }>
         {ReasonReact.string("data van: ")}
         <a className="buienradar-link" href="https://www.buienradar.nl">
           {ReasonReact.string("https://www.buienradar.nl")}

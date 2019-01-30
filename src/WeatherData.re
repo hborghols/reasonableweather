@@ -3,6 +3,7 @@ type weather = {
   summary: string,
   temp: option(float),
   id: string,
+  imageUrl: string,
 };
 
 type forecast = {summary: string};
@@ -15,6 +16,7 @@ let parseWeatherJson = json =>
     summary: field("weatherdescription", string, json),
     temp: field("temperature", optional(Json.Decode.float), json),
     id: string_of_int(field("stationid", int, json)),
+    imageUrl: field("iconurl", string, json),
   };
 
 let parseWeatherStationsJson = json =>
