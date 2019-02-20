@@ -12,11 +12,11 @@ let url = "https://api.buienradar.nl/data/public/2.0/jsonfeed";
 
 let parseWeatherJson = json =>
   Json.Decode.{
+    id: string_of_int(field("stationid", int, json)),
     name: field("stationname", string, json),
     summary: field("weatherdescription", string, json),
-    temp: field("temperature", optional(Json.Decode.float), json),
-    id: string_of_int(field("stationid", int, json)),
     imageUrl: field("iconurl", string, json),
+    temp: optional(field("temperature", Json.Decode.float),json),
   };
 
 let parseWeatherStationsJson = json =>
